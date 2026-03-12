@@ -13,6 +13,8 @@ datasource db {
 model Board {
   id        Int      @id @default(autoincrement())
   title     String
+  status    String   @default("TODO")
+  order     Float    @default(0)
   createdAt DateTime @default(now())
 
   proposition Proposition[]
@@ -20,9 +22,10 @@ model Board {
 
 model Proposition {
   id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime @default(now())
-  ip        String
+  title       String
+  createdAt   DateTime @default(now())
+  ip          String
+  isCompleted Boolean  @default(false)
 
   board   Board  @relation(fields: [boardId], references: [id])
   boardId Int

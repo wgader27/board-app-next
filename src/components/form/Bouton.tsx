@@ -2,5 +2,5 @@ import { classed } from '@tw-classed/react';
 
 export const Button = classed(
   'button',
-  'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
+  'inline-flex items-center justify-center font-bold rounded-xl text-base px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20 transition-all focus:ring-4 focus:ring-blue-500/50 outline-none w-full sm:w-auto'
 );

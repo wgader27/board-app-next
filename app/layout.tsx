@@ -1,5 +1,8 @@
 import { Header } from '~/src/components/Header'
 import './globals.css'
+import { Outfit } from '@next/font/google';
+
+const outfit = Outfit({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -15,9 +18,11 @@ export default function RootLayout({
       <head />
 
       
-      <body className='bg-gray-900 text-gray-50'>
+      <body className={`min-h-screen bg-gradient-to-br from-slate-900 via-[#0f172a] to-blue-900 animate-gradient-x text-slate-200 selection:bg-blue-500 selection:text-white ${outfit.className}`}>
         <Header />
-        <div className='p-4'>{children}</div>   
+        <main className='max-w-6xl mx-auto p-4 md:p-8 relative z-10'>
+          {children}
+        </main>
       </body>
     </html>
   )

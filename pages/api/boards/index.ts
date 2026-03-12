@@ -6,6 +6,8 @@ type Data = {
     boards: Board;
 }
 
+import { prisma } from "~/src/db/prisma";
+
 export default async function handler(
     req:NextApiRequest , 
     res: NextApiResponse 
@@ -17,4 +19,21 @@ export default async function handler(
 
     }
 
+    const bodySchema = z.object({
+        title: z.string().min(1).max(255)
+    });
+
+    const parsedBody = bodySchema.safeParse(req.body);
+
+    if (!parsedBody.success) {
+        return res.status(400).json({ error: "Invalid board title" });
+    }
+
+    const newBoard = await prisma.board.create({
+        data: {
+            title: parsedBody.data.title
+        }
+    });
+
+    return res.status(201).json(newBoard);
 }

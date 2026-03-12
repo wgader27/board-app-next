@@ -33,10 +33,14 @@ export const UpVote = ({ voteCount, propositionId }: UpVoteProps) => {
   return (
     <button
       onClick={handleClick}
-      className="flex flex-col border-2 items-center px-8 py-2 rounded-md border-green-600 bg-green-900 bg-opacity-50 hover:bg-opacity-75"
+      className={`flex flex-col items-center px-6 py-2 rounded-lg border transition-all shadow-sm ${
+        voteCount > 0 
+          ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 shadow-emerald-500/10'
+          : 'border-slate-600/50 bg-slate-800/50 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-slate-700'
+      }`}
     >
-      <IoIosArrowUp fontSize={24} />
-      <span className="text-xl font-bold">{voteCount}</span>
+      <IoIosArrowUp fontSize={24} className="mb-[-4px]" />
+      <span className="text-lg font-bold">{voteCount}</span>
     </button>
   );
 };
